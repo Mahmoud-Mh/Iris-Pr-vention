@@ -12,9 +12,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all(); // Retrieve all posts
-        return view('posts.index', compact('posts')); // Pass posts to the index view
+        $posts = Post::paginate(5); // Display 5 posts per page
+        return view('posts.index', compact('posts'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
