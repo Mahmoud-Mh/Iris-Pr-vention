@@ -12,7 +12,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5); // Display 5 posts per page
+        $posts = Post::paginate(5); 
         return view('posts.index', compact('posts'));
     }
     
@@ -22,7 +22,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('posts.create'); // Render the form for creating a new post
+        return view('posts.create'); 
     }
 
     /**
@@ -35,7 +35,7 @@ class PostController extends Controller
             'body' => 'required|string',
         ]);
 
-        Post::create($validatedData); // Save the validated data as a new post
+        Post::create($validatedData); 
         return redirect()->route('posts.index')->with('success', 'Post created successfully!');
     }
 
@@ -44,7 +44,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('posts.show', compact('post')); // Pass the post to the show view
+        return view('posts.show', compact('post')); 
     }
 
     /**
@@ -52,7 +52,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit', compact('post')); // Pass the post to the edit view
+        return view('posts.edit', compact('post')); 
     }
 
     /**
@@ -65,7 +65,7 @@ class PostController extends Controller
             'body' => 'required|string',
         ]);
 
-        $post->update($validatedData); // Update the post with the validated data
+        $post->update($validatedData); 
         return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
     }
 
@@ -74,7 +74,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete(); // Delete the specified post
+        $post->delete(); 
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully!');
     }
 
